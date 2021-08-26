@@ -7,8 +7,11 @@
 
     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('negara.index') }}">Negara</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('negara.create') }}">Tambah Negara</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('kota.index') }}">Kota</a>

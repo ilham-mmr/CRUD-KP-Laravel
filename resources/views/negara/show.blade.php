@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
 @section('judul')
-    Negara {{ $negara->nama }}
+    Negara {{ $negara->nama }} <a href="{{ route('negara.edit', $negara->id) }}"><i class="bi bi-pencil-square"></i></a>
 @endsection
 
 @section('isi')
+    @if (session('update'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('update') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="mb-4">
         <ul style="list-style: none">
             <table class="table text-center">
@@ -53,7 +59,9 @@
         <table class="table text-center">
             <thead>
                 <tr>
-                    <th scope="col">Nama Kota</th>
+                    @if ($kotas->count() > 0)
+                        <th scope="col">Nama Kota</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +70,7 @@
                         <td>{{ $kota->nama }}</td>
                     </tr>
                 @empty
-                    <p>Tidak ada kota yang terdaftar</p>
+                    <p class="text-center m-5">Tidak ada kota yang terdaftar</p>
                 @endforelse
             </tbody>
         </table>

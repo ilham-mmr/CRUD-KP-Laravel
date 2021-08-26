@@ -17,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/','/negara');
 
 Route::get('/negara', [NegaraController::class, 'index'])->name('negara.index');
+Route::get('/negara/create', [NegaraController::class, 'create'])->name('negara.create');
+Route::get('/negara/{negara}/edit', [NegaraController::class, 'edit'])->name('negara.edit');
+Route::put('/negara/{negara}', [NegaraController::class, 'update'])->name('negara.update');
 Route::get('/negara/{negara}', [NegaraController::class, 'show'])->name('negara.show');
+Route::delete('/negara/{negara}', [NegaraController::class, 'destroy'])->name('negara.destroy');
+Route::post('/negara', [NegaraController::class, 'store'])->name('negara.store');
+
 Route::get('/kota', [KotaController::class, 'index'])->name('kota.index');
