@@ -6,6 +6,11 @@
 
 @section('isi')
 
+    @if (session('isNotAdmin'))
+        <div class="alert alert-primary" role="alert">
+            {{ session('isNotAdmin') }}
+        </div>
+    @endif
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -34,13 +39,18 @@
                         <td>
                             <a class="btn btn-primary" href="{{ route('negara.show', $negara->id) }}"
                                 role="button">Detail</a>
-                            <a class="btn btn-dark" href="{{ route('negara.edit', $negara->id) }}" role="button">Edit</a>
+                            @auth
+                                @if (Auth::user()->roles == 'ADMIN')
+                                    <a class="btn btn-dark" href="{{ route('negara.edit', $negara->id) }}"
+                                        role="button">Edit</a>
 
-                            <form action="{{ route('negara.destroy', $negara->id) }}" method="POST"
-                                class="d-inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger">Hapus</button>
+                                    <form action="{{ route('negara.destroy', $negara->id) }}" method="POST"
+                                        class="d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Hapus</button>
+                                @endif
+                            @endauth
                             </form>
                         </td>
                     </tr>
