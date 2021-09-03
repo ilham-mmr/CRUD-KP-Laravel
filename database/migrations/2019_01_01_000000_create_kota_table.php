@@ -15,8 +15,8 @@ class CreateKotaTable extends Migration
     public function up()
     {
         Schema::create('kota', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->unsignedTinyInteger('negara_id');
+            $table->id();
+            $table->unsignedBigInteger('negara_id');
             $table->string('nama');
             $table->string('nama_inggris')->nullable();
             $table->decimal('lat', 10,7)->nullable();
