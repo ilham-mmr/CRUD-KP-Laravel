@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\NegaraController;
+use App\Http\Controllers\SportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,18 @@ use App\Http\Controllers\NegaraController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes(['verify' => true]);
 
-Route::redirect('/','/negara');
+Route::redirect('/', '/negara');
+
+Route::get('/sports/create', [SportsController::class, 'create'])->name('sports.create');
+Route::get('/sports', [SportsController::class, 'index'])->name('sports.index');
+Route::post('/sports', [SportsController::class, 'store'])->name('sports.store');
+
 
 Route::get('/negara', [NegaraController::class, 'index'])->name('negara.index');
-Route::middleware(['auth','verified','admin'])->group(function(){
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/negara/create', [NegaraController::class, 'create'])->name('negara.create');
     Route::get('/negara/{negara}/edit', [NegaraController::class, 'edit'])->name('negara.edit');
     Route::put('/negara/{negara}', [NegaraController::class, 'update'])->name('negara.update');

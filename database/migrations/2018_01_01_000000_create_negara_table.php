@@ -15,7 +15,7 @@ class CreateNegaraTable extends Migration
     public function up()
     {
         Schema::create('negara', function (Blueprint $table) {
-            $table->tinyIncrements('id');
+            $table->id();
             $table->string('kode');
             $table->string('kode_iso3')->nullable();
             $table->string('nama');
@@ -38,7 +38,7 @@ class CreateNegaraTable extends Migration
         Schema::dropIfExists('pemesanan');
         Schema::dropIfExists('kamar');
         Schema::dropIfExists('kota');
-        
+
         Schema::dropIfExists('negara');
     }
 }

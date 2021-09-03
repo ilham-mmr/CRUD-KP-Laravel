@@ -10,13 +10,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('negara.index') }}">Negara</a>
             </li>
-            @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('negara.create') }}">Tambah Negara</a>
-                </li>
-            @endauth
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('kota.index') }}">Kota</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('sports.index') }}">Daftar Medali</a>
             </li>
 
         </ul>
@@ -44,13 +43,20 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        <a class="dropdown-item" href="{{ route('negara.create') }}">
+                            Tambah Negara
+                        </a>
+                        <a class="dropdown-item" href="{{ route('sports.create') }}">
+                            Daftar Sports
+                        </a>
+
                     </div>
                 </li>
             @endguest
